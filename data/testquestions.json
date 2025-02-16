@@ -1,0 +1,111 @@
+{
+  "questions": [
+    {
+      "question": "React is mainly used for building...",
+      "options": [
+        "Databases",
+        "User Interfaces",
+        "Mobile Apps",
+        "All of the above"
+      ],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "What file extension do React components often use?",
+      "options": [".js", ".jsx", ".html", ".react"],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "Which command creates a new React project?",
+      "options": [
+        "npm init react",
+        "npx create-react-app",
+        "npm build react",
+        "node start react"
+      ],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "What is used to pass data to components?",
+      "options": ["State", "Props", "Variables", "Functions"],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "How do you write JavaScript in JSX?",
+      "options": [
+        "With parentheses ()",
+        "With curly braces {}",
+        "With square brackets []",
+        "With quotes \"\""
+      ],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "Which hook manages simple component state?",
+      "options": ["useEffect", "useState", "useContext", "useReducer"],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "How do you render components in React?",
+      "options": [
+        "Using <Component> tags",
+        "With render() method",
+        "Using parentheses ()",
+        "With dollar signs $"
+      ],
+      "correctOption": 0,
+      "points": 10
+    },
+    {
+      "question": "What is the starting component file in a new project?",
+      "options": ["index.html", "App.test.js", "App.js", "package.json"],
+      "correctOption": 2,
+      "points": 10
+    },
+    {
+      "question": "What command runs a React project locally?",
+      "options": ["npm run", "npm start", "npm build", "node start"],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "How do you update state correctly?",
+      "options": [
+        "state = 5",
+        "setState(5)",
+        "this.state = 5",
+        "const [state] = 5"
+      ],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "What is JSX?",
+      "options": [
+        "JavaScript XML",
+        "A programming language",
+        "A database",
+        "A testing framework"
+      ],
+      "correctOption": 0,
+      "points": 10
+    },
+    {
+      "question": "Which component method runs first?",
+      "options": [
+        "componentDidMount",
+        "render",
+        "constructor",
+        "componentWillUnmount"
+      ],
+      "correctOption": 2,
+      "points": 10
+    }
+  ]
+}

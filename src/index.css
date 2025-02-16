@@ -1,13 +1,27 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap");
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --color-medium: #ced4da;
+  --color-light: #f1f3f5;
+  --color-dark: #495057;
+
+  --color-theme: #240046;
+  --color-light-chosen: #e0aaff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  color: var(--color-light);
+  background-color: var(--color-theme);
+}
+
+header {
+  font-family: "Delicious Handrawn", serif;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 5rem;
+  font-size: 4.5rem;
 }
