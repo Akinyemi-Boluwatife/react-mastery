@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Delicious+Handrawn&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -11,17 +12,83 @@
 
   --color-theme: #240046;
   --color-light-chosen: #e0aaff;
+  --color-dark-chosen: #10002b;
 }
 
 body {
   color: var(--color-light);
   background-color: var(--color-theme);
+  font-family: "Bitter", serif;
 }
 
 header {
   font-family: "Delicious Handrawn", serif;
   font-weight: 400;
   text-align: center;
-  margin-top: 5rem;
+  margin: 5rem 2rem;
   font-size: 4.5rem;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.intro h2 {
+  font-size: 2.5rem;
+}
+
+.loader-wrp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  width: 60px;
+  aspect-ratio: 2;
+  --_g: no-repeat
+    radial-gradient(circle closest-side, var(--color-light-chosen) 90%, #0000);
+  background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
+  background-size: calc(100% / 3) 50%;
+  animation: l3 1s infinite linear;
+}
+@keyframes l3 {
+  20% {
+    background-position: 0% 0%, 50% 50%, 100% 50%;
+  }
+  40% {
+    background-position: 0% 100%, 50% 0%, 100% 50%;
+  }
+  60% {
+    background-position: 0% 50%, 50% 100%, 100% 0%;
+  }
+  80% {
+    background-position: 0% 50%, 50% 50%, 100% 100%;
+  }
+}
+
+.errr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+}
+.errr p {
+  border: 3px solid red;
+  font-size: 30px;
+  padding: 0.5rem;
+  border-radius: 25px;
+}
+.btn {
+  font-weight: 550;
+  padding: 1rem;
+  color: var(--color-light);
+  border-radius: 25px;
+  background-color: var(--color-dark-chosen);
+  border: 1px;
+}
+.btn:hover {
+  background-color: var(--color-light-chosen);
+  color: var(--color-dark-chosen);
 }
