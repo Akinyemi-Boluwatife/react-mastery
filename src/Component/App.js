@@ -8,6 +8,7 @@ import Questions from "./Questions";
 import Footer from "./Footer";
 import Timer from "./Timer";
 import Next from "./Next";
+import Finish from "./Finish";
 
 const initialState = {
   questions: [],
@@ -17,6 +18,7 @@ const initialState = {
   points: 0,
   index: 0,
   answer: null,
+  highScore: 0,
 };
 
 function reducer(state, action) {
@@ -38,6 +40,22 @@ function reducer(state, action) {
             ? state.points + question.points
             : state.points,
       };
+    case "next":
+      return { ...state, index: state.index + 1, answer: null };
+    case "finish":
+      return {
+        ...state,
+        status: "finished",
+        highScore:
+          state.points > state.highScore ? state.points : state.highScore,
+      };
+    case "restart":
+      return {
+        ...initialState,
+        status: "ready",
+        highScore: state.highScore,
+        questions: state.questions,
+      };
 
     default:
       throw new Error("This action is unknown");
@@ -52,12 +70,11 @@ function App() {
       .catch((err) => dispatch({ type: "error" }));
   }, []);
 
-  const [{ questions, status, points, index, answer }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [{ questions, status, points, index, answer, highScore }, dispatch] =
+    useReducer(reducer, initialState);
 
   const maxQuestions = questions.length;
+  console.log(maxQuestions);
   const totalPoints = questions.reduce((prev, cur) => prev + cur.points, 0);
 
   return (
@@ -80,9 +97,22 @@ function App() {
             />
             <Footer>
               <Timer />
-              <Next />
+              <Next
+                dispatch={dispatch}
+                index={index + 1}
+                maxQuestions={maxQuestions}
+                answer={answer}
+              />
             </Footer>
           </>
+        )}
+        {status === "finished" && (
+          <Finish
+            points={points}
+            totalPoints={totalPoints}
+            dispatch={dispatch}
+            highScore={highScore}
+          />
         )}
       </Main>
     </div>

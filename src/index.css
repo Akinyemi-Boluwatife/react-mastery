@@ -22,7 +22,9 @@ body {
   color: var(--color-light);
   background-color: var(--color-theme);
   font-family: "Bitter", serif;
-  overflow: hidden;
+  /* overflow: hidden; */
+  /* height: 100%;
+  width: 100%; */
 }
 
 header {
@@ -155,7 +157,8 @@ progress[value]::-webkit-progress-value {
   color: #111;
 }
 .answeredCorrect {
-  background-color: green !important;
+  background-color: #70e000 !important;
+  color: var(--color-dark);
 }
 .WrongAnswer {
   background-color: var(--color-red) !important;
@@ -176,6 +179,35 @@ progress[value]::-webkit-progress-value {
 }
 .btn-list {
   background-color: var(--color-tek);
+}
+.finish-cont {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.fns-mssg p {
+  font-weight: 600;
+  font-size: 28px;
+  word-spacing: 0.3rem;
+  color: #240046;
+  text-align: center;
+}
+.fns-mssg {
+  padding: 1rem;
+  background-color: #c77dff;
+  border-radius: 25px;
+}
+.fns-hgh-rst {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.fns-hgh-rst p {
+  font-size: 25px;
+  color: greenyellow;
 }
 footer {
   display: flex;

@@ -11,7 +11,7 @@ function Option({ question, answer, dispatch }) {
             className={`btn btn-list ${
               hasAnswered
                 ? index === question.correctOption
-                  ? "answeredCorrectly"
+                  ? "answeredCorrect"
                   : "WrongAnswer"
                 : ""
             } ${answer === index ? "answered" : ""}`}
