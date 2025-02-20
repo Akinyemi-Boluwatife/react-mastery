@@ -10,6 +10,8 @@ import Timer from "./Timer";
 import Next from "./Next";
 import Finish from "./Finish";
 
+const SEC_PER_QUESTION = 30;
+
 const initialState = {
   questions: [],
 
@@ -19,6 +21,7 @@ const initialState = {
   index: 0,
   answer: null,
   highScore: 0,
+  timeRemaining: null,
 };
 
 function reducer(state, action) {
@@ -28,7 +31,11 @@ function reducer(state, action) {
     case "error":
       return { ...state, status: "error" };
     case "active":
-      return { ...state, status: "active" };
+      return {
+        ...state,
+        status: "active",
+        timeRemaining: state.questions.length * SEC_PER_QUESTION,
+      };
     case "answerChosen":
       const question = state.questions.at(state.index);
 
@@ -56,6 +63,12 @@ function reducer(state, action) {
         highScore: state.highScore,
         questions: state.questions,
       };
+    case "tick-tick":
+      return {
+        ...state,
+        timeRemaining: state.timeRemaining - 1,
+        status: state.timeRemaining === 0 ? "finished" : state.status,
+      };
 
     default:
       throw new Error("This action is unknown");
@@ -70,8 +83,10 @@ function App() {
       .catch((err) => dispatch({ type: "error" }));
   }, []);
 
-  const [{ questions, status, points, index, answer, highScore }, dispatch] =
-    useReducer(reducer, initialState);
+  const [
+    { questions, status, points, index, answer, highScore, timeRemaining },
+    dispatch,
+  ] = useReducer(reducer, initialState);
 
   const maxQuestions = questions.length;
   console.log(maxQuestions);
@@ -96,7 +111,7 @@ function App() {
               dispatch={dispatch}
             />
             <Footer>
-              <Timer />
+              <Timer timeRemaining={timeRemaining} dispatch={dispatch} />
               <Next
                 dispatch={dispatch}
                 index={index + 1}
