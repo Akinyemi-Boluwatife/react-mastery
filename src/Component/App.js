@@ -1,4 +1,3 @@
-import { useEffect, useReducer } from "react";
 import Header from "./Header";
 import Main from "./Main";
 import Welcome from "./Welcome";
@@ -9,129 +8,40 @@ import Footer from "./Footer";
 import Timer from "./Timer";
 import Next from "./Next";
 import Finish from "./Finish";
-
-const SEC_PER_QUESTION = 30;
-
-const initialState = {
-  questions: [],
-
-  // 'Loading', 'error', 'ready', 'active', 'finished'
-  status: "loading",
-  points: 0,
-  index: 0,
-  answer: null,
-  highScore: 0,
-  timeRemaining: null,
-};
-
-function reducer(state, action) {
-  switch (action.type) {
-    case "loadedQuestions":
-      return { ...state, status: "ready", questions: action.payload };
-    case "error":
-      return { ...state, status: "error" };
-    case "active":
-      return {
-        ...state,
-        status: "active",
-        timeRemaining: state.questions.length * SEC_PER_QUESTION,
-      };
-    case "answerChosen":
-      const question = state.questions.at(state.index);
-
-      return {
-        ...state,
-        answer: action.payload,
-        points:
-          question.correctOption === action.payload
-            ? state.points + question.points
-            : state.points,
-      };
-    case "next":
-      return { ...state, index: state.index + 1, answer: null };
-    case "finish":
-      return {
-        ...state,
-        status: "finished",
-        highScore:
-          state.points > state.highScore ? state.points : state.highScore,
-      };
-    case "restart":
-      return {
-        ...initialState,
-        status: "ready",
-        highScore: state.highScore,
-        questions: state.questions,
-      };
-    case "tick-tick":
-      return {
-        ...state,
-        timeRemaining: state.timeRemaining - 1,
-        status: state.timeRemaining === 0 ? "finished" : state.status,
-      };
-
-    default:
-      throw new Error("This action is unknown");
-  }
-}
+import { useQuiz } from "./context/QuizContext";
 
 function App() {
-  useEffect(function () {
-    fetch(`http://localhost:7001/questions`)
-      .then((res) => res.json())
-      .then((data) => dispatch({ type: "loadedQuestions", payload: data }))
-      .catch((err) => dispatch({ type: "error" }));
-  }, []);
-
-  const [
-    { questions, status, points, index, answer, highScore, timeRemaining },
-    dispatch,
-  ] = useReducer(reducer, initialState);
-
-  const maxQuestions = questions.length;
-  console.log(maxQuestions);
-  const totalPoints = questions.reduce((prev, cur) => prev + cur.points, 0);
-
+  const { status } = useQuiz();
   return (
     <div>
       <Header />
       <Main>
         {status === "loading" && <Loader />}
         {status === "error" && <Error />}
-        {status === "ready" && <Welcome dispatch={dispatch} />}
+        {status === "ready" && <Welcome />}
         {status === "active" && (
           <>
-            <Questions
-              maxQuestions={maxQuestions}
-              totalPoints={totalPoints}
-              points={points}
-              question={questions[index]}
-              answer={answer}
-              index={index}
-              dispatch={dispatch}
-            />
+            <Questions />
             <Footer>
-              <Timer timeRemaining={timeRemaining} dispatch={dispatch} />
-              <Next
-                dispatch={dispatch}
-                index={index + 1}
-                maxQuestions={maxQuestions}
-                answer={answer}
-              />
+              <Timer />
+              <Next />
             </Footer>
           </>
         )}
-        {status === "finished" && (
-          <Finish
-            points={points}
-            totalPoints={totalPoints}
-            dispatch={dispatch}
-            highScore={highScore}
-          />
-        )}
+        {status === "finished" && <Finish />}
       </Main>
     </div>
   );
 }
 
 export default App;
+
+// -Duplicate 'src' folder to 'src-no-context*
+// -Review data flow and passed props
+// -Identify prop drilling problem
+// -Use the Context API to fix the (very small) prop drilling problem
+// -Create a new context 'QuizContext with the reducer we created earlier
+// -Create a custom provider component "QuizProvider' and provide all the state to the app
+// -Create a custom hook to consume state all over the application
+// - Delete all unnecessary props
+// - IMPORTANT: Note how you actually need state right in App component. This means you need to wrap the whole App into the context (HINT: try in index.js)

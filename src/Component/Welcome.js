@@ -1,4 +1,7 @@
-function Welcome({ dispatch }) {
+import { useQuiz } from "./context/QuizContext";
+
+function Welcome() {
+  const { dispatch } = useQuiz();
   return (
     <div className="intro">
       <h2> Dive into React Mastery!</h2>

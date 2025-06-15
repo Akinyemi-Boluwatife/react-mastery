@@ -1,6 +1,10 @@
-function Next({ dispatch, index, maxQuestions, answer }) {
+import { useQuiz } from "./context/QuizContext";
+
+function Next() {
+  const { dispatch, index, maxQuestions, answer } = useQuiz();
+
   if (answer === null) return null;
-  if (index < maxQuestions) {
+  if (index + 1 < maxQuestions) {
     return (
       <button className="btn" onClick={() => dispatch({ type: "next" })}>
         Next
@@ -8,7 +12,7 @@ function Next({ dispatch, index, maxQuestions, answer }) {
     );
   }
 
-  if (index === maxQuestions) {
+  if (index + 1 === maxQuestions) {
     return (
       <button className="btn" onClick={() => dispatch({ type: "finish" })}>
         Finish

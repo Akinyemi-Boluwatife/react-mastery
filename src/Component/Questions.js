@@ -1,15 +1,9 @@
+import { useQuiz } from "./context/QuizContext";
 import Option from "./Option";
 
-function Questions({
-  maxQuestions,
-  totalPoints,
-  points,
-  question,
-  answer,
-  index,
-  dispatch,
-}) {
-  console.log(question);
+function Questions() {
+  // console.log(question);
+  const { maxQuestions, totalPoints, points, answer, index } = useQuiz();
   return (
     <div className="question-wrapper">
       <div className="pg-qst">
@@ -22,7 +16,7 @@ function Questions({
             Points: {points}/{totalPoints}
           </p>
         </div>
-        <Option question={question} answer={answer} dispatch={dispatch} />
+        <Option />
       </div>
     </div>
   );

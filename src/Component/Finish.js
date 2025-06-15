@@ -1,4 +1,8 @@
-function Finish({ points, totalPoints, highScore, dispatch }) {
+import { useQuiz } from "./context/QuizContext";
+
+function Finish() {
+  //context api
+  const { points, totalPoints, highScore, dispatch } = useQuiz();
   const scorePercentage = Math.floor((points / totalPoints) * 100);
   return (
     <div className="finish-cont">
