@@ -20,7 +20,7 @@ A React-based quiz web app designed to test and improve your knowledge of React 
 - **CSS** – Styling
 - **Context API + useReducer** – State management
 
-## 🧑‍💻 Getting Started
+## 🧑‍💻 Getting Started:
 
 ### Prerequisites
 
