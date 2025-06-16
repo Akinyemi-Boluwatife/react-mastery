@@ -35,3 +35,4 @@ function App() {
 }
 
 export default App;
+// name: react-mastery, use: it is a web app that is like cbe software which i pick answers and it contains questions but the questions are react quizes, key features: track real time quiz scores (points) and tells the user the coorect option afterit has been picked. tech used: react.js and css,
