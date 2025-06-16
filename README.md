@@ -12,7 +12,6 @@ A React-based quiz web app designed to test and improve your knowledge of React 
 - 🧠 Real-time score tracking
 - 🔍 Instant feedback with correct answer highlight
 - 🗂️ Global state management using Context API and `useReducer`
-- ⚡ Fast development experience with Vite
 
 ## 🛠️ Technologies Used
 
