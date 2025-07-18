@@ -35,7 +35,7 @@ npm install
 ```
 
 ### How to run the app
-1.Start the backend server locally: npm run server
-2.In a new terminal tab or window, start the frontend: npm run dev
+1.  Start the backend server locally: npm run server
+2.  In a new terminal tab or window, start the frontend: npm run dev
 
 ### Built by Boluwatife Akinyemi
