@@ -1,6 +1,6 @@
 # React Mastery 🧠⚛️
 
-A React-based quiz web app designed to test and improve your knowledge of React concepts—built like a CBE (Computer-Based Exam) system.
+A React-based quiz web app designed to test and improve your knowledge of React concepts.
 
 ## 📚 Overview
 
